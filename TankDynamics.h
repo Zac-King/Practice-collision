@@ -13,24 +13,17 @@ bool condition(Entity *e)
 
 void update(Entity *e)
 {
+
 	float dt = core(Time).getDeltaTime();
 
 	if (core(Input).getKeyDown(e->controller->forward))
-	{
-		e->rigidbody->addForce(e->transform->up() * e->controller->speed);
-	}
+		{	e->rigidbody->addForce(e->transform->up() * e->controller->speed);	}
 	if (core(Input).getKeyDown(e->controller->reverse))
-	{
-		e->rigidbody->addForce(e->transform->up() * (e->controller->speed * -1));
-	}
+		{	e->rigidbody->addForce(e->transform->up() * (e->controller->speed * -1));	}
 	if (core(Input).getKeyDown(e->controller->turn_Left))
-	{
-		e->rigidbody->addTorque(e->controller->torque * -1);
-	}
+		{	e->rigidbody->addTorque(e->controller->torque * -1);}
 	if (core(Input).getKeyDown(e->controller->turn_Right))
-	{
-		e->rigidbody->addTorque(e->controller->torque * 1);
-	}
+		{	e->rigidbody->addTorque(e->controller->torque * 1);	}
 	//Bullet
 	auto &ref = e->controller;
 	if (core(Input).getKeyDown(ref->fire) && ref->firingDelay < ref->firingTimer)

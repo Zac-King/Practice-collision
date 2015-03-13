@@ -41,11 +41,4 @@ Shape MakeRect(float x, float y, float xMin, float yMax, float xMax, float yMin)
 Shape MakePlane(float x, float y, vec3 n);
 Shape MakeRay(float x, float y);
 
-vec3 CollisionNormal(Circle a, Circle b)
-{
-	return normal(a.position - b.position);
-}
-vec3 CollisionNormal(Rect a, Rect b);
-vec3 CollisionNormal(Circle a, Rect b);
-
 void runCollisionTest();

@@ -15,6 +15,7 @@ bool condition(Entity *e)
 
 void update(Entity *e)
 {
+	
 	for each(auto o in e->collider->contacts)
 		if (condition(o) && e->factoryIndex < o->factoryIndex)
 		{
@@ -23,7 +24,9 @@ void update(Entity *e)
 			auto &m1 = e->rigidbody->mass;
 			auto &m2 = o->rigidbody->mass;
 
-			////solve for v1' v2'	
+			
+			////solve for v1' v2'
+
 			vec3 v1f, v2f;
 			v2f = ((v1 * -2 * m2) + v2*(m1 - m2)) * (1 / (-m2 - m1));
 			v1f = v1 + v2 - v2f;

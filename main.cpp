@@ -76,8 +76,11 @@ int main()
 	core(Factory).CreatePlane(core(Window).width() / 2, 0, vec3Make(0, 1, 0), 0);
 	core(Factory).CreatePlane(core(Window).width() / 2, core(Window).height(), vec3Make(0, -1, 0), 0);
 
-	core(Factory).MakeTank(core(Window).width() / 2 - 320, core(Window).width() / 2, 1);
-	core(Factory).MakeTank(core(Window).width() / 2 + 320, core(Window).width() / 2, 2, 'I', 'K', 'J', 'L', 'U', 'O', 'N');
+	//core(Factory).CreateCircle(core(Window).width() / 2, core(Window).height() / 2, 55, 0);
+	core(Factory).CreateRect(core(Window).width() / 2, core(Window).height() / 2, 0);
+
+	core(Factory).MakeTank(core(Window).width() / 2 - 320, core(Window).height() / 2, 1);
+	core(Factory).MakeTank(core(Window).width() / 2 + 320, core(Window).height() / 2, 2, 'I', 'K', 'J', 'L', 'U', 'O', 'N');
 	//core(Factory).MakeAsteroid(core(Window).width() / 2, core(Window).width() / 2, 3);
 
 	runGame();

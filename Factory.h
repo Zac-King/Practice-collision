@@ -57,7 +57,7 @@ public:
 		e->deleteEntity = true;
 	}
 
-	Entity *MakeTank(float x, float y, int faction, char up = 'W', char down = 'S', char left = 'A' , char right = 'D', char tLeft = 'Q', char tRight = 'E', char Fire = 'C')
+	Entity *MakeTank(float x, float y, int faction, char up = 'W', char down = 'S', char left = 'A' , char right = 'D', char tLeft = 'Q', char tRight = 'E', char Fire = ' ')
 	{
 		Entity *tank = newEntity();
 		Entity *turret = newEntity();
@@ -90,8 +90,8 @@ public:
 
 		tank->collider->faction = faction;
 		tank->controller->torque = 500;
-		//tank->collider->shape = MakeCircle(0,0,40);
-		tank->collider->shape = MakeRect(0, 0, -30, -30, 30, 30); 
+		tank->collider->shape = MakeCircle(0,0,40);
+		//tank->collider->shape = MakeRect(0, 0, -30, -30, 30, 30); 
 		tank->rigidbody->mass = 500;
 		tank->rigidbody->drag = 300;
 
@@ -139,8 +139,8 @@ public:
 		bullet->render->mesh = "Bullet";
 		bullet->render->shader = "Flat";
 		bullet->collider->faction = faction;
-		bullet->collider->shape = MakeCircle(0,0,7);
-		//bullet->collider->shape = MakeRect(0, 0, -20, -10, 20, 40);
+		//bullet->collider->shape = MakeCircle(0,0,7);
+		bullet->collider->shape = MakeRect(0, 0, -20, -10, 20, 40);
 		bullet->rigidbody->velocity = bullet->transform->up() * speed;
 
 		bullet->rigidbody->drag = 8;
@@ -184,6 +184,32 @@ public:
 		plane->collider->faction = faction;
 		plane->collider->shape = MakePlane(x, y, n);
 		return plane;
+	}
+	
+	Entity *CreateCircle(float x, float y, int r, int faction)
+	{
+		Entity *circle = newEntity();
+
+		compMake(circle, collider);
+		compMake(circle, transform);
+
+		circle->collider->faction = faction;
+		circle->collider->shape = MakeCircle(x, y, r);
+		return circle;
+	}
+
+	Entity *CreateRect(float x, float y, int faction)
+	{
+		Entity *rect = newEntity();
+
+		compMake(rect, collider);
+		compMake(rect, transform);
+
+		rect->collider->faction = faction;
+		rect->transform->position() = vec3Make(x, y, 0);
+		rect->collider->shape = MakeRect(0,0,25,25,-25,-25);
+
+		return rect;
 	}
 
 coreEndDef
